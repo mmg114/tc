@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "CreditCard")
+@Table(name = "creditcard" ,schema = "public")
 public class CreditCard {
 
     @Id
