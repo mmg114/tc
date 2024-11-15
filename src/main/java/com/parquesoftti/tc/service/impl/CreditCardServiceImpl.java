@@ -33,6 +33,14 @@ public class CreditCardServiceImpl implements CreditCardService {
         }
         return creditCardRepository.findById(id);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public CreditCard getCreditCardsByCardNumber(String cardNumber) {
+        return creditCardRepository.findCreditCardByCardNumber(cardNumber).get();
+    }
+
+
     @Transactional(readOnly = false, rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
     @Override
     public CreditCard saveCreditCard(CreditCard creditCard) {

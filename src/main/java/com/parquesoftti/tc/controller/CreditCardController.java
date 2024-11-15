@@ -45,4 +45,9 @@ public class CreditCardController {
         creditCardService.deleteCard(id);
         return ResponseEntity.ok().body("");
     }
+    @GetMapping("/cardnumber/{creditcard}")
+    public ResponseEntity<CreditCard> getCreditCardsByCardNumber(
+            @PathVariable String creditcard){
+        return ResponseEntity.ok().body(creditCardService.getCreditCardsByCardNumber(creditcard));
+    }
 }
