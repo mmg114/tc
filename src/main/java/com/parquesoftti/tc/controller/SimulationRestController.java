@@ -18,16 +18,7 @@ public class SimulationRestController {
         }
 
 
-        @DeleteMapping()
-        public ResponseEntity<String> deleteCard(){
-            return null;
-        }
 
-
-        @GetMapping()
-        public ResponseEntity<String> getCard(){
-            return null;
-        }
 
 
 }
