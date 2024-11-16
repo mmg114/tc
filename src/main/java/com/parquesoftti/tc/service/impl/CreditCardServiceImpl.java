@@ -66,10 +66,21 @@ public class CreditCardServiceImpl implements CreditCardService {
         if (existingCard.isEmpty()) {
             throw new RuntimeException("No se encontró la tarjeta de crédito en la base de datos.");
         }
+        var tmp= existingCard.get();
 
-        creditCard.setId(id);
-        validateCreditCard(creditCard);
-        return creditCardRepository.save(creditCard);
+        if (creditCard.getCardNumber()!=null) {
+            tmp.setCardNumber(creditCard.getCardNumber());
+        }
+
+        if (creditCard.getCvv()!=null) {
+            tmp.setCvv(creditCard.getCvv());
+        }
+
+        if (creditCard.getExpirationDate()!=null) {
+            tmp.setExpirationDate(creditCard.getExpirationDate());
+        }
+
+        return creditCardRepository.save(tmp);
     }
     @Transactional(readOnly = false, rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
     @Override

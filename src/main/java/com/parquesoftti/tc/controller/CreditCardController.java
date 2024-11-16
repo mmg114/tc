@@ -34,7 +34,7 @@ public class CreditCardController {
         return ResponseEntity.ok().body(creditCardService.saveCreditCard(creditCard));
     }
 
-    @PutMapping()
+    @PutMapping("/{id}")
     public ResponseEntity<CreditCard> updateCreditCard(@RequestBody CreditCard creditCard,@PathVariable Long id) {
         return ResponseEntity.ok().body(creditCardService.updateCreditCard(creditCard, id));
     }
