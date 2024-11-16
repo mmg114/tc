@@ -37,7 +37,15 @@ public class CreditCardServiceImpl implements CreditCardService {
     @Override
     @Transactional(readOnly = true)
     public CreditCard getCreditCardsByCardNumber(String cardNumber) {
-        return creditCardRepository.findCreditCardByCardNumber(cardNumber).get();
+
+        var tmp=creditCardRepository.findCreditCardByCardNumber(cardNumber);
+
+        if (tmp.isPresent()) {
+            return tmp.get();
+        }else {
+            throw new IllegalArgumentException("El numero de credito no existe");
+        }
+
     }
 
 
